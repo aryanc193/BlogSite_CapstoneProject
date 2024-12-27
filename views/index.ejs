@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Welcome to Bloggggger!</h1>
+<h2>Share what's on your mind!</h2>
+
+<form action="/submit" method="POST">
+  <input type="text" name="username" placeholder="Your Name" required />
+  <textarea name="blog" placeholder="Write here..." required></textarea>
+  <input type="submit" value="Publish Post" />
+</form>
+
+<h3>Read some of the recent blogs here...</h3>
+<ul>
+  <% if (blogs.length > 0) { blogs.forEach((blog, index) => { %>
+  <li class="listBlogMain">
+    <div class="blogText">
+      <strong><%= blog.username %></strong>
+      <div class="blogButtons">
+        <button type="button" class="edit-button" data-id="<%= index %>">
+          <img src="/images/writingLogo.png" alt="Edit"/>
+        </button>
+        <button type="button" class="delete-button" data-id="<%= index %>">
+          <img src="/images/delete.png" alt="Delete"/>
+        </button>
+      </div>
+    </div>
+    <div class="blogContent"><%= blog.content %></div>
+  </li>
+  <% }); } else { %>
+  <li class="listBlog">No blogs yet, Be the first to write something :D</li>
+  <% } %>
+</ul>
+
+<script>
+  document.querySelectorAll(".delete-button").forEach(button => {
+    button.addEventListener("click", function () {
+      const index = this.dataset.id;
+      
+      fetch("/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `index=${index}`
+      }).then(() => location.reload());
+    });
+  });
+
+  document.querySelectorAll(".edit-button").forEach(button => {
+    button.addEventListener("click", function () {
+      const index = this.dataset.id;
+      const newContent = prompt("Enter the updated content:");
+      
+      if (newContent) {
+        fetch("/edit", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: `index=${index}&content=${encodeURIComponent(newContent)}`
+        }).then(() => location.reload());
+      }
+    });
+  });
+</script>
+
+<%- include("partials/footer.ejs") %>

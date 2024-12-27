@@ -1,0 +1,164 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
+}
+
+main {
+  text-align: left;
+  flex: 1 0 auto;
+  padding: 5%;
+}
+
+h1 {
+  text-align: left;
+}
+
+p {
+  color: grey;
+}
+
+.profile {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+form {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.feedback-input {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 2px solid #000000;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.feedback-input:focus {
+  border: 2px solid #000000;
+}
+
+textarea {
+  width: 80%;
+  height: 150px;
+  overflow-wrap: anywhere;
+  border-radius: 10px;
+  border: 10;
+  cursor: text;
+  color: black;
+  font-size: 18px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  padding: 2%;
+  font-weight: 500;
+}
+
+[type="text"] {
+  width: 80%;
+  height: 50px;
+  border-radius: 10px;
+  border: 10;
+  cursor: text;
+  color: black;
+  font-size: 18px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  margin-bottom: 2%;
+  padding: 2%;
+  font-weight: 500;
+}
+
+[type="submit"] {
+  width: 80%;
+  background: #000000;
+  border-radius: 50px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: 5px;
+  font-weight: 700;
+  margin-bottom: 5%;
+}
+[type="submit"]:hover {
+  background: #3575ff;
+}
+
+.listBlog {
+  list-style: none;
+}
+
+.listBlogMain {
+  list-style: none;
+  font-size: larger;
+  border-radius: 30px;
+  background-color: #ededed;
+  margin: 1%;
+  padding: 3%;
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Stack elements vertically */
+  position: relative; /* For absolute positioning of buttons */
+}
+
+/* For the top row: Post number on the left, buttons on the right */
+.listBlogMain .blogText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Space between the top row and the blog text */
+}
+
+.blogText strong {
+  flex: 1; /* Push buttons to the right */
+}
+
+/* Buttons container: Positioned on the top-right corner */
+.blogButtons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 2%;
+  display: flex; /* Align buttons horizontally */
+  gap: 5px; /* Space between buttons */
+}
+
+.blogButtons button img {
+  width: 30px;
+}
+
+.blogButtons button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Blog content styling */
+.listBlogMain .blogContent {
+  margin-top: 10px;
+  word-wrap: break-word; /* Ensure text wraps within the container */
+  color: #333; /* Adjust text color */
+}
